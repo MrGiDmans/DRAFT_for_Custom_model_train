@@ -1,0 +1,45 @@
+model:
+  name: DinoDragonCNN       # Имя модели сейчас доступно две (DinoDragonCNN, SuperDinoDragonCNN)
+  image_size: 224         # Размер изображений, на которые будут масштабироваться все входные данные, DinoDragonCNN использует 224x224, SuperDinoDragonCNN использует 640x640
+  dropout: 0.3             # Вероятность "отключения" нейронов при обучении (Dropout)
+  use_batchnorm: true      # Использовать ли BatchNorm после сверточных слоев
+
+training:
+  model_name: test  # Имя модели (будет использовано в названии папки и сохранении результатов)
+  batch_size: 32           # Размер батча
+  epochs: 1               # Количество эпох обучения
+  learning_rate: 0.0001    # Начальная скорость обучения
+  optimizer: adam          # Оптимизатор: adam, sgd и т.д.
+  weight_decay: 0.0005     # Регуляризация весов (L2)
+
+data:
+  data_path: "/home/pbsoft20/Project/DRAFT_for_Custom_model_train/data/dino-or-dragon/versions/2"  # Путь до директории, содержащей папки train/ и test/
+
+save:
+  base_path: "./model_train/models_weights"  # Базовая директория для сохранения всех моделей
+  save_each_epoch: true          # Сохранять ли веса модели после каждой эпохи
+
+reproducibility:
+  seed: 42              # Фиксация random seed для воспроизводимости результатов
+  deterministic: true   # Включает полный детерминизм (может немного замедлить обучение)
+
+resume:
+  enabled: false                          # Продолжить ли обучение с последней сохраненной точки
+  checkpoint_path: "./model_train/models_weights/checkpoint.pth"  # Путь к чекпоинту для возобновления
+
+
+# models_weights/
+# └── dino_dragon/                     ← имя модели из config.training.model_name
+#     └── 2025-04-15_21-12-00/         ← временная метка (дата и время запуска обучения)
+#         ├── checkpoints/             ← все веса модели по эпохам
+#         │   ├── model_epoch_1.pth
+#         │   ├── model_epoch_2.pth
+#         │   └── ...
+#         ├── logs/
+#         │   └── metrics_log.json     ← лог метрик (loss, accuracy и т.д.)
+#         ├── plots/
+#         │   ├── loss.png
+#         │   ├── accuracy.png
+#         │   └── ...                  ← графики обучения
+#         ├── best_weight.pth          ← веса модели с наилучшей точностью на валидации
+#         └── config_used.yaml         ← копия YAML-файла конфигурации

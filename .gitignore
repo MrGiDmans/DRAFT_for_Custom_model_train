@@ -1,0 +1,11 @@
+.venv_mydraft
+model_train/models_weights
+data
+__pycache__/
+.venv/
+venv/
+*.pyc
+*.pth
+*.log
+*.json
+*.png
