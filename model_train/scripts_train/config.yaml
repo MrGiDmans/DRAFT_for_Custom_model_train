@@ -13,7 +13,7 @@ training:
   weight_decay: 0.0005     # Регуляризация весов (L2)
 
 data:
-  data_path: "/home/pbsoft20/Project/DRAFT_for_Custom_model_train/data/dino-or-dragon/versions/2"  # Путь до директории, содержащей папки train/ и test/
+  data_path: "C:/Users/ManSure/_My_VS_Code_Projects/DRAFT_for_Custom_model_train/data/dino-or-dragon/version/2"  # Путь до директории, содержащей папки train/ и test/
 
 save:
   base_path: "./model_train/models_weights"  # Базовая директория для сохранения всех моделей
